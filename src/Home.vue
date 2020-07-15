@@ -1,18 +1,41 @@
 <template>
-    <div id="app">
-        <h1>{{msg}}</h1>
-    </div>    
+  <div id="app">
+    <h1>{{msg}}</h1>
+    <div id="adobe-dc-view"></div>
+  </div>
 </template>
 <script>
 export default {
-    data: function(){
-        return {
-            msg: "Welcome to the State of Hawaii's public informations page"
-        }
-    }
-}
+  data() {
+    return {
+      msg: "CPIMA"
+    };
+  },
+  created() {
+    let ckeditor = document.createElement("script");
+    ckeditor.setAttribute("src", "//documentcloud.adobe.com/view-sdk/main.js");
+    document.head.appendChild(ckeditor);
+    document.addEventListener("adobe_dc_view_sdk.ready", function() {
+      var adobeDCView = new AdobeDC.View({
+        clientId: "790af3f947c1460881d99bf4110ab2e2",
+        divId: "adobe-dc-view"
+      });
+      adobeDCView.previewFile(
+        {
+          content: {
+            location: {
+              url:
+                "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"
+            }
+          },
+          metaData: { fileName: "./assets/pdfView.js" }
+        },
+        {}
+      );
+    });
+  }
+};
 </script>
 
 <style>
-
 </style>
