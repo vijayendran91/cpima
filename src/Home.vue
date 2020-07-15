@@ -12,6 +12,7 @@ export default {
     };
   },
   created() {
+    
     let ckeditor = document.createElement("script");
     ckeditor.setAttribute("src", "//documentcloud.adobe.com/view-sdk/main.js");
     document.head.appendChild(ckeditor);
@@ -25,10 +26,10 @@ export default {
           content: {
             location: {
               url:
-                "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"
+                "src/assets/State of Hawaii Guide.pdf"
             }
           },
-          metaData: { fileName: "./assets/pdfView.js" }
+          metaData: { fileName: "State of Hawaii Guide.pdf" }
         },
         {}
       );
